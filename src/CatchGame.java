@@ -24,6 +24,7 @@ public class CatchGame {
      * (create people, set positions, etc.)
      */
     public CatchGame() {
+        //initializes the board, doctor and the daleks
         b = new Board(12, 12);
 
         doctor = new Doctor((int) (Math.random() * 12), (int) (Math.random() * 12));

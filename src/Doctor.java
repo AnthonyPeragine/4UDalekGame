@@ -30,6 +30,9 @@ public class Doctor {
      * @param newCol The column the player clicked on.
      */
     public void move(int newRow, int newCol) {
+        //finds difference between current row/col and clicked row/col
+        //if absolute value of difference is less than 1, moves to clicked coord
+        //if > 1, teleport randomly
         int moveRow = newRow - this.row;
         int moveCol = newCol - this.col;
         if (Math.abs(moveRow) <= 1 && Math.abs(moveCol) <= 1) {

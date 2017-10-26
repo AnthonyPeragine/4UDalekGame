@@ -28,6 +28,8 @@ public class Dalek {
      * @param doc The Doctor to move towards.
      */
     public void advanceTowards(Doctor doc) {
+        //compares dalek's row and column with that of th doctor
+        //moves dalek accordingly
         if (doc.getRow() > this.row) {
             this.row = this.row + 1;
         }
@@ -76,9 +78,6 @@ public class Dalek {
      * @return true if this Dalek has crashed, false otherwise
      */
     public boolean hasCrashed() {
-        if (hasCrashed == true) {
-            return true;
-        }
-        return false;
+        return hasCrashed;
     }
 }
