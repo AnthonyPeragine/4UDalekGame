@@ -1,5 +1,6 @@
 
-/** This class creates a game and starts the game play.
+/**
+ * This class creates a game and starts the game play.
  */
 public class MainGame {
 
@@ -7,5 +8,4 @@ public class MainGame {
         CatchGame game = new CatchGame();
         game.playGame();
     }
-
 }
