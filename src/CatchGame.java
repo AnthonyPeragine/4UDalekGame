@@ -51,11 +51,11 @@ public class CatchGame {
 
         //win/lose condition to lopo the game logic
         while (win > 0 && lose > 0) {
-            
-            
+
+
             //get a coordinate from the player to mvoe the doctor later
             Coordinate c = b.getClick();
-            
+
             //MOVE THE DOCTOR
             b.removePeg(doctor.getRow(), doctor.getCol());
             doctor.move(c.getRow(), c.getCol());
@@ -64,19 +64,19 @@ public class CatchGame {
             //for loop to advanced towards the doctor
             for (Dalek dalek : dal) {
                 if (dalek.hasCrashed() == false) {
-                    for(int i = 0; i < dal.size(); i++){
-                    b.removePeg(dal.get(i).getRow(), dal.get(i).getCol());
+                    for (int i = 0; i < dal.size(); i++) {
+                        b.removePeg(dal.get(i).getRow(), dal.get(i).getCol());
                     }
                     dalek.advanceTowards(doctor);
-                    for(int i = 0; i < dal.size(); i++){
-                    b.putPeg(Color.BLACK, dal.get(i).getRow(), dal.get(i).getCol());
+                    for (int i = 0; i < dal.size(); i++) {
+                        b.putPeg(Color.BLACK, dal.get(i).getRow(), dal.get(i).getCol());
                     }
-                }else{
+                } else {
                     //else put a red peg on the daleks (backup red peg)
                     b.putPeg(Color.RED, dalek.getRow(), dalek.getCol());
                 }
             }
-            
+
             //check if player lost
             for (int x = 0; x < 3; x++) {
                 if (dal.get(x).getRow() == doctor.getRow()
@@ -85,22 +85,22 @@ public class CatchGame {
                     lose--;
                 }
             }
-            
+
             //for loop to determine if dalek has crashed
             //checks dalek at i with the dalek at j, which is one ahead in the list
             //if positions are equal, they crash
-            for(int i = 0; i < dal.size(); i++){
-                for(int j = i + 1; j < dal.size(); j++){
+            for (int i = 0; i < dal.size(); i++) {
+                for (int j = i + 1; j < dal.size(); j++) {
                     if (dal.get(i).getRow() == dal.get(j).getRow()
-                        && dal.get(i).getCol() == dal.get(j).getCol()) {
-                    if (dal.get(i).hasCrashed() == false || dal.get(j).hasCrashed() == false) {
-                        win = win - 2;
+                            && dal.get(i).getCol() == dal.get(j).getCol()) {
+                        if (dal.get(i).hasCrashed() == false || dal.get(j).hasCrashed() == false) {
+                            win = win - 2;
+                        }
+                        dal.get(i).crash();
+                        dal.get(j).crash();
+                        b.putPeg(Color.RED, dal.get(i).getRow(), dal.get(i).getCol());
+                        b.putPeg(Color.RED, dal.get(j).getRow(), dal.get(j).getCol());
                     }
-                    dal.get(i).crash();
-                    dal.get(j).crash();
-                    b.putPeg(Color.RED, dal.get(i).getRow(), dal.get(i).getCol());
-                    b.putPeg(Color.RED, dal.get(j).getRow(), dal.get(j).getCol());
-                }
                 }
             }
 
